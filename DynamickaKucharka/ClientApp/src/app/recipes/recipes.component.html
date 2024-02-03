@@ -1,0 +1,9 @@
+<div class="recipes-container">
+  <div class="recipes-items" *ngFor="let prod of products">
+    <div>
+      <img [src]="prod.imageURL" class="recipes-images"/>
+    </div>
+    <div class="recipes-name">{{prod.name}}</div>
+    <div class="recipes-difficulty">{{prod.difficulty}}</div>
+  </div>
+</div>
