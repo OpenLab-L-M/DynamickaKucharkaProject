@@ -10,8 +10,7 @@ namespace DynamickaKucharka.Data
     {
         public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
-        {
-
-        }
+        { }
+             public DbSet<Recipes> Recipes { get; set; }
     }
-}
+    }
