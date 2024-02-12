@@ -11,7 +11,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { RecipesComponent } from './recipes/recipes.component';
-import { ReceptyDetailsPageComponent } from './recipes/recepty-details-page/recepty-details-page.component';
+import { RecipesDetailsComponent } from './recipes-details/recipes-details.component';
 import { FilterPipe } from './recipes/FilterPipe';
 
 @NgModule({
@@ -20,9 +20,9 @@ import { FilterPipe } from './recipes/FilterPipe';
     NavMenuComponent,
     HomeComponent,
     RecipesComponent,
-    FilterPipe
+    FilterPipe,
     RecipesComponent,
-    ReceptyDetailsPageComponent
+    RecipesDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,9 +32,9 @@ import { FilterPipe } from './recipes/FilterPipe';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'recipes', component: RecipesComponent },
-      { path: 'ReceptyDetailsPage/:id', component: ReceptyDetailsPageComponent }
+      { path: 'RecipesDetails/:id', component: RecipesDetailsComponent }
       //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-    ])
+    ],{ bindToComponentInputs: true })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

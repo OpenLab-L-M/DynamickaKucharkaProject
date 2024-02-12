@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DynamickaKucharka.Models
 {
-    public class Recipes
+    public class Recipe
     {
         [Key]
         public int Id { get; set; }

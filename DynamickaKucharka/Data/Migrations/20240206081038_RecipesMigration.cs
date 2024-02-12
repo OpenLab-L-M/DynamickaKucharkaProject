@@ -5,7 +5,7 @@
 namespace DynamickaKucharka.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Recipes : Migration
+    public partial class RecipesMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

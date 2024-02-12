@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from 'src/app/recipes/recipe'
+import { Component, Input, OnDestroy, OnInit, signal, Pipe, PipeTransform, inject } from '@angular/core';
+import { RecipesDTO } from 'src/app/recipes/RecipesDTO'
+import { RecipesService } from 'src/app/recipes.service'
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-recipes',
@@ -7,8 +9,20 @@ import { Recipe } from 'src/app/recipes/recipe'
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent {
-  selectedProduct: Recipe;
-  products = [
+
+  recipeService = inject(RecipesService);
+  recipes? = signal<RecipesDTO[]>([]);
+  private destroy$ = new Subject<void>();
+  constructor() { }
+  ngOnInit(): void {
+    this.recipeService.getRecipesList()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => this.recipes.set(result));
+    /*this.recipeService.Testujem()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe( result =>console.log(result))*/
+  }
+  /*products = [
     {
       id: 1,
       name: "Spaghetti",
@@ -65,5 +79,5 @@ export class RecipesComponent {
       difficulty: "medium ",
       imageURL: "https://img.freepik.com/free-photo/pasta-spaghetti-with-tomato-sauce-cheese-served-plate_1220-6910.jpg?w=900&t=st=1706977232~exp=1706977832~hmac=202af646197cd9ec09381b955b869589191163e0b8a86d3376aba48ba569286d"
     }
-  ]
+  ]*/
 }

@@ -13,7 +13,7 @@ namespace DynamickaKucharka.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240206081038_Recipes")]
-    partial class Recipes
+    partial class RecipesMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
