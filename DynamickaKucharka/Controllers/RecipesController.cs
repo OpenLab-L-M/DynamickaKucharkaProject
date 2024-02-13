@@ -32,7 +32,20 @@ namespace DynamickaKucharka.Controllers
                     ImageURL = dbRecipe.ImageURL,
                 });
         }
+        [HttpGet("{id:int}")]
+        public RecipesDTO GetRecipes(int id)
+        {
+            var recipe = _context.Recipes.Single(savedId => savedId.Id == id);
+            return new RecipesDTO
+            {
+                Name = recipe.Name,
+                Description = recipe.Description,
+                Difficulty = recipe.Difficulty,
+                ImageURL = recipe.ImageURL,
 
+            };
+            
+        }
     }
 }
 

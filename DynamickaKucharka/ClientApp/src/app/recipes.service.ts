@@ -6,7 +6,7 @@ import { RecipesDTO } from 'src/app/recipes/RecipesDTO'
   providedIn: 'root'
 })
 export class RecipesService {
-  private recipesURL = this.baseUrl + 'recipes';
+  private recipesURL = this.baseUrl + 'recipes/';
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
@@ -14,7 +14,7 @@ export class RecipesService {
     return this.http.get<RecipesDTO[]>(this.recipesURL)
   }
 
-  Testujem() {
-    return this.http.get<string>(this.recipesURL);
+  getClickedRecipes(Id: number) {
+    return this.http.get<RecipesDTO>(this.recipesURL + Id);
   }
 }

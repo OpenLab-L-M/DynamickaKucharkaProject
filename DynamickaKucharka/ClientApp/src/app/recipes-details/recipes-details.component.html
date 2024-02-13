@@ -1,1 +1,12 @@
-<p>recipes-details works!</p>
+<div>
+  <p>
+    {{recipe().name}}
+  </p>
+  <p>
+    {{recipe().description}}
+  </p>
+  <p>
+    {{recipe().difficulty}}
+  </p>
+  <img [src]="recipe().imageURL"/>
+</div>

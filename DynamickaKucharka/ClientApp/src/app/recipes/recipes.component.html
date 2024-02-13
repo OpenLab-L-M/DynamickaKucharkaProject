@@ -1,7 +1,7 @@
 <div class="recipes-container">
   <div class="recipes-items" *ngFor="let recipe of recipes()">
     <div>
-      <img [src]="recipe.imageURL" class="recipes-images" [routerLink]="['/ReceptyDetailsPage', recipe.id]"/>
+      <img [src]="recipe.imageURL" class="recipes-images" [routerLink]="['/RecipesDetails', recipe.id]"/>
     </div>
     <div class="recipes-name">{{recipe.name}}</div>
     <div class="recipes-difficulty">{{recipe.difficulty}}</div>
