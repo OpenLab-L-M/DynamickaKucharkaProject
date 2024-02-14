@@ -13,14 +13,31 @@ export class RecipesComponent {
   recipeService = inject(RecipesService);
   recipes? = signal<RecipesDTO[]>([]);
   private destroy$ = new Subject<void>();
+
+  sSearchRecept: string = '';
   constructor() { }
   ngOnInit(): void {
     this.recipeService.getRecipesList()
       .pipe(takeUntil(this.destroy$))
       .subscribe(result => this.recipes.set(result));
+
     /*this.recipeService.Testujem()
       .pipe(takeUntil(this.destroy$))
       .subscribe( result =>console.log(result))*/
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+
+  filterRecipesByDifficulty(difficulty: string): void {
+    this.sSearchRecept = difficulty.toLowerCase();
+  }
+
+  clearFilter(): void {
+    this.sSearchRecept = '';
   }
   /*products = [
     {

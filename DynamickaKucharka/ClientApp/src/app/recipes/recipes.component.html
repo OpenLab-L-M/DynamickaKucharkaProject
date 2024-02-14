@@ -1,5 +1,5 @@
 <div class="recipes-container">
-  <div class="recipes-items" *ngFor="let recipe of recipes()">
+  <div class="recipes-items" *ngFor="let recipe of recipes() | filter : sSearchRecept">
     <div>
       <img [src]="recipe.imageURL" class="recipes-images" [routerLink]="['/RecipesDetails', recipe.id]"/>
     </div>
@@ -11,9 +11,10 @@
   <div class="dropdown">
     <button class="dropbtn">Difficulty</button>
     <div class="dropdown-filter">
-      <a>Easy</a>
-      <a>Medium</a>
-      <a>Hard</a>
+      <a (click)="filterRecipesByDifficulty('Easy')">Easy</a>
+      <a (click)="filterRecipesByDifficulty('Medium')">Medium</a>
+      <a (click)="filterRecipesByDifficulty('Hard')">Hard</a>
+      <a (click)="clearFilter()">Clear</a>
     </div>
   </div>
 

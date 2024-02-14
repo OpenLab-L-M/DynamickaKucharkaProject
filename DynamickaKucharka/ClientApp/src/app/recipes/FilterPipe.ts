@@ -1,10 +1,27 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { RecipesDTO } from './RecipesDTO';
 
 @Pipe({
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(value: any, ...args: any[]) {
-        throw new Error('Method not implemented.');
-    } 
+  transform(items: RecipesDTO[], sSearchRecept: string): RecipesDTO[] {
+
+    // return empty array if array is falsy
+    if (!items) { return []; }
+
+    // return the original array if search text is empty
+    if (!sSearchRecept) { return items; }
+
+    // convert the searchText to lower case
+    sSearchRecept = sSearchRecept.toLowerCase();
+
+    // retrun the filtered array
+    return items.filter(item => {
+      if (item && item.difficulty) {
+        return item.difficulty.toLowerCase().includes(sSearchRecept);
+      }
+      return [];
+    });
+  }
 }
