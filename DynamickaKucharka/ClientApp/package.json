@@ -11,6 +11,7 @@
     "build:ssr": "ng run DynamickaKucharka:server:dev",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "create_recipe": "ng g c create_recipe --module=app.module.ts",
     "updateang": "ng update @angular/core@16 @angular/cli@16"
   },
   "private": true,

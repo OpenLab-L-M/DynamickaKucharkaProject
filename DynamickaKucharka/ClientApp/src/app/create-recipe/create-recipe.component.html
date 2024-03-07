@@ -1,0 +1,35 @@
+<body>
+  <img src="https://media.istockphoto.com/id/1129153331/photo/food-for-the-family.jpg?s=612x612&w=0&k=20&c=Kf_Oz3ur1ECW3R9qclOYzUXYfyQQ1wzKwnQUA4ZXB-0=" alt=""/>
+  <div class="tabulka">
+    <h1>Create your recipe</h1>
+    <div class="formy">
+      <form [formGroup]="profileForm">
+        <p>
+          <input id="name" type="text" formControlName="name">
+          <span></span>
+          <label for="name">Name of recipe: </label>
+        </p>
+
+        <p>
+          <input id="desc" type="text" formControlName="desc">
+          <span></span>
+          <label for="desc">Recipe description: </label>
+        </p>
+
+        <p>
+          <input id="diff" type="text" formControlName="diff">
+          <span></span>
+          <label for="diff">Difficulty: </label>
+        </p>
+
+        <p>
+          <input id="img" type="text" formControlName="img">
+          <span></span>
+          <label for="img">Add an image: </label>
+        </p>
+        <button type="submit" [disabled]="!profileForm.valid">Create recipe</button>
+
+      </form>
+    </div>
+  </div>
+</body>

@@ -13,6 +13,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipesDetailsComponent } from './recipes-details/recipes-details.component';
 import { FilterPipe } from './recipes/FilterPipe';
+import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FilterPipe } from './recipes/FilterPipe';
     RecipesComponent,
     FilterPipe,
     RecipesComponent,
-    RecipesDetailsComponent
+    RecipesDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,6 +33,7 @@ import { FilterPipe } from './recipes/FilterPipe';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'recipes', component: RecipesComponent },
+      { path: 'create_recipes', component: CreateRecipeComponent },
       { path: 'RecipesDetails/:id', component: RecipesDetailsComponent }
       //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ],{ bindToComponentInputs: true })
